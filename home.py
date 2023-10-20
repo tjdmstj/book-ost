@@ -1,4 +1,4 @@
-from st_pages import Page, Section, add_page_title, show_pages
+from st_pages import Page, add_page_title, show_pages
 import streamlit as st
 
 
