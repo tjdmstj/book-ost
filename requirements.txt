@@ -2,6 +2,7 @@ st_pages
 streamlit
 pandas
 numpy
+openpyxl
 requests
 scikit-learn
 selenium
