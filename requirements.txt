@@ -1,0 +1,14 @@
+st_pages
+streamlit
+pandas
+numpy
+warnings
+requests
+json
+scikit-learn
+selenium
+time
+googletrans
+re
+nltk
+joblib
