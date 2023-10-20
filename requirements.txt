@@ -3,7 +3,6 @@ streamlit
 pandas
 numpy
 requests
-json
 scikit-learn
 selenium
 time
