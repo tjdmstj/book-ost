@@ -5,7 +5,6 @@ numpy
 requests
 scikit-learn
 selenium
-time
 googletrans
 re
 nltk
