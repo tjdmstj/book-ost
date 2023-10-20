@@ -16,7 +16,7 @@ st.markdown('근래에 들어 **한국인의 독서량 감소**와 **젊은 층
 st.markdown('미디어를 통한 정보 습득과 달리, 독서는 정제되지 않은 정보를 스스로 이해하고 자신의 것으로 습득하는 지적 과정을 거치기 때문에 독서가 문해력과 같은 지적 능력 발달에 매우 중요한 것으로 알려져 있습니다. 따라서 젊은 층의 문해력 저하 문제의 원인이 ‘독서량 감소’에 있다는 의견이 제기되고 있습니다.')
 st.markdown('이러한 **한국인의 독서량 감소**와 **젊은 층의 문해력 저하**에 대하여, 저희 팀은 **독서에 대한 흥미를 높이고 독서를 장려할 수 있는 방안을 제시하는 것**이 두 문제의 해결 방안이 될 것이라 생각했습니다.')
 st.markdown('')
-path = os.path.dirname('/Users/seoeunseo/Desktop/deep.daiv/프로젝트/project_run/이미지')
+path = os.path.dirname('/Users/seoeunseo/Desktop/deep.daiv/프로젝트/project_run/이미지/')
 
 img = Image.open(path+'멜로디책방.png')
 st.image(img)
