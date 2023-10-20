@@ -1,5 +1,4 @@
 st_pages
-PIL
 streamlit
 pandas
 numpy
