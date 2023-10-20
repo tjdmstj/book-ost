@@ -39,4 +39,4 @@ with st.expander("날씨가 좋으면 찾아가겠어요"):
     st.markdown('**- audio feature 감정 : 가사 감정 : 가사 내용 = 0.8 : 0.1 : 0.1 ( audio feature 기반 유사도 중심)**')
     st.markdown('**- audio feature 감정 : 가사 감정 : 가사 내용 = 0 : 0.5 : 0.5 ( 가사 기반 유사도만 사용)**')
     st.markdown('의 비율로 가중치를 부여 했을 때 좋은 추천이 이루어 짐을 확인 할 수 있었습니다.')
-    st.image('예시.png')
+    st.image('https://velog.velcdn.com/images/jeo0534/post/68833f04-55ba-4831-8dc3-ade372efd42e/image.png')
