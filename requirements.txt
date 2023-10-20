@@ -6,6 +6,5 @@ requests
 scikit-learn
 selenium
 googletrans
-re
 nltk
 joblib
