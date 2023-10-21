@@ -8,6 +8,6 @@ webdriver_manager
 requests
 scikit-learn
 selenium
-googletrans
+googletrans==3.1.0a0 
 nltk
 joblib
