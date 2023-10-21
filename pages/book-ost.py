@@ -14,6 +14,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver import FirefoxOptions
 
 import time
 
@@ -199,13 +200,13 @@ target_url = 책정보['url']
 
 
 # 옵션 생성
-chrome_options = webdriver.ChromeOptions()
+chrome_options = FirefoxOptions()
 # 창 숨기는 옵션 추가
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--log-level=3')
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+driver = webdriver.Firefox(options=options)
 driver.get(target_url)
 
 img= driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[1]/div[1]/span/img')
