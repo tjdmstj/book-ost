@@ -200,11 +200,11 @@ target_url = 책정보['url']
 
 
 # 옵션 생성
-chrome_options = webdriver.ChromeOptions()
+options = webdriver.ChromeOptions()
 # 창 숨기는 옵션 추가
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--disable-gpu')
-chrome_options.add_argument('--log-level=3')
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')
+options.add_argument('--log-level=3')
 
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
 driver.get(target_url)
