@@ -3,6 +3,7 @@ streamlit
 pandas
 numpy
 openpyxl
+webdriver_manager
 requests
 scikit-learn
 selenium
