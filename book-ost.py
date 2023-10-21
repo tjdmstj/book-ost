@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import warnings
 import openpyxl
-from webdriver_manager.chrome import ChromeDriverManager
 
 warnings.filterwarnings('ignore')
 
@@ -202,7 +201,7 @@ options = webdriver.ChromeOptions()
 # 창 숨기는 옵션 추가
 options.add_argument("headless")
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+driver = webdriver.Chrome(options=options)
 driver.get(target_url)
 
 img= driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[1]/div[1]/span/img')
