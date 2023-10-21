@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import warnings
 import openpyxl
-from webdriver_manager.chrome import ChromeDriverManager
 
 warnings.filterwarnings('ignore')
 
@@ -10,13 +9,8 @@ import requests
 import json
 
 from sklearn.metrics.pairwise import cosine_similarity
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-
 import time
+from bs4 import BeautifulSoup as bs
 
 from googletrans import Translator
 
@@ -199,16 +193,23 @@ book = pd.DataFrame({'title': 책정보['title'],
 target_url = 책정보['url']
 
 
-# 옵션 생성
-options = Options()
-# 창 숨기는 옵션 추가
-options.add_argument('headless')
+response = requests.get(target_url)
+soup = bs(response.text, "html.parser")
 
-driver = webdriver.Chrome(service=Service(executable_path='/Users/seoeunseo/Desktop/deep.daiv/프로젝트/project_run/chromedriver.exe'), options=options)
-driver.get(target_url)
+책소개 = soup.select('#tabContent > div:nth-child(1) > div:nth-child(3) > p')
+책속으로 = soup.select('#tabContent > div:nth-child(1) > div:nth-child(6) > p')
+서평 = soup.select('#tabContent > div:nth-child(1) > div:nth-child(7) > p')
 
-img= driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[1]/div[1]/span/img')
-img_src = img.get_attribute('src')
+책소개 = 책소개[0].text
+책속으로 = 책속으로[0].text
+서평 = 서평[0].text
+
+book['책소개'] = 책소개
+book['책속으로'] = 책속으로
+book['서평'] = 서평
+
+img= soup.select('#tabContent > div:nth-child(1) > div.info_section.info_intro > div.wrap_thumb > span > img')
+img_src = img[0]['src']
 
 col1, col2 = st.columns([1,2])
 with col1:
