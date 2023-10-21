@@ -13,6 +13,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 
 import time
 
@@ -204,7 +205,7 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--log-level=3')
 
-driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options)
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 driver.get(target_url)
 
 img= driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[1]/div[1]/span/img')
