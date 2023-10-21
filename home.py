@@ -5,7 +5,7 @@ from PIL import Image
 show_pages(
     [   
         Page('home.py','INTRO','🏠'),
-        Page("book-ost.py", "START", "🎧"),
+        Page("pages/book-ost.py", "START", "🎧"),
     ]
 )
 add_page_title()
