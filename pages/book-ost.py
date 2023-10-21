@@ -206,7 +206,7 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--log-level=3')
 
-driver = webdriver.Firefox(options=options)
+driver = webdriver.Firefox(options=chrome_options)
 driver.get(target_url)
 
 img= driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[1]/div[1]/span/img')
