@@ -13,7 +13,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
 
 import time
 
@@ -199,7 +198,7 @@ target_url = 책정보['url']
 
 
 # 옵션 생성
-options = Options()
+options = webdriver.ChromeOptions()
 # 창 숨기는 옵션 추가
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
