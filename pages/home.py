@@ -4,7 +4,7 @@ from PIL import Image
 
 show_pages(
     [   
-        Page('home.py','INTRO','🏠'),
+        Page('pages/home.py','INTRO','🏠'),
         Page("pages/book-ost.py", "START", "🎧"),
     ]
 )
