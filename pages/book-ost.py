@@ -198,13 +198,13 @@ target_url = 책정보['url']
 
 
 # 옵션 생성
-options = webdriver.ChromeOptions()
+chrome_options = webdriver.ChromeOptions()
 # 창 숨기는 옵션 추가
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
 options.add_argument('--log-level=3')
 
-driver = webdriver.Chrome('chromedriver/chromedriver.exe',options=options)
+driver = webdriver.Chrome('chromedriver/chromedriver.exe',options=chrome_options)
 driver.get(target_url)
 
 img= driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[1]/div[1]/span/img')
