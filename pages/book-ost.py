@@ -203,10 +203,8 @@ target_url = 책정보['url']
 options = Options()
 # 창 숨기는 옵션 추가
 options.add_argument('headless')
-release = 'https://chromedriver.storage.googleapis.com/LATEST_RELEASE'
-version = requests.get(release).text
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+driver = webdriver.Chrome(service=Service(executable_path='/Users/seoeunseo/Desktop/deep.daiv/프로젝트/project_run/chromedriver.exe'), options=options)
 driver.get(target_url)
 
 img= driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[1]/div[1]/span/img')
