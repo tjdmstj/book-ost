@@ -229,36 +229,6 @@ my_bar = st.progress(0, text=text)
 time.sleep(5)
 my_bar.progress(5, text='〰️5%〰️')
 
-try :
-    botton = driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[2]/div[3]/a')
-    botton.click()
-except :
-    pass
-책소개 = driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[2]/p')
-
-time.sleep(3)
-my_bar.progress(10, text='〰️10%〰️')
-try :
-    botton = driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[5]/div[3]/a')
-    botton.click()
-except :
-    pass
-책속으로 = driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[5]/p')
-
-time.sleep(3)
-my_bar.progress(20, text='〰️20%〰️')
-try :
-    botton = driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[6]/div[3]/a')
-    botton.click()
-except :
-    pass
-서평 = driver.find_element(By.XPATH, '//*[@id="tabContent"]/div[1]/div[6]/p')
-
-
-book['책소개'] = 책소개.text
-book['책속으로'] = 책속으로.text
-book['서평'] = 서평.text
-driver.close()
 
 time.sleep(1)
 my_bar.progress(30, text='〰️30%〰️')
