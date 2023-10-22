@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import warnings
 import openpyxl
-import text_pro
 
 warnings.filterwarnings('ignore')
 
@@ -124,14 +123,74 @@ time.sleep(1)
 my_bar.progress(30, text='〰️30%〰️')
 
 
+#영어 불용어 사전
+stops = set(stopwords.words('english'))
+
+def hapus_url(text):
+    mention_pattern = r'@[\w]+'
+    cleaned_text = re.sub(mention_pattern, '', text)
+    return re.sub(r'http\S+','', cleaned_text)
+
+#특수문자 제거
+#영어 대소문자, 숫자, 공백문자(스페이스, 탭, 줄바꿈 등) 아닌 문자들 제거
+def remove_special_characters(text, remove_digits=True):
+    text=re.sub(r'[^a-zA-Z0-9\s]', '', text)
+    return text
+
+
+#불용어 제거
+def delete_stops(text):
+    text = text.lower().split()
+    text = ' '.join([word for word in text if word not in stops])
+    return text
+   
+    
+#품사 tag 매칭용 함수
+def get_wordnet_pos(treebank_tag):
+    if treebank_tag.startswith('J'):
+        return wordnet.ADJ
+    elif treebank_tag.startswith('V'):
+        return wordnet.VERB
+    elif treebank_tag.startswith('N'):
+        return wordnet.NOUN
+    elif treebank_tag.startswith('R'):
+        return wordnet.ADV
+    else:
+        return wordnet.NOUN
+    
+
+#품사 태깅 + 표제어 추출
+def tockenize(text):
+    tokens=word_tokenize(text)
+    pos_tokens=nltk.pos_tag(tokens)
+    
+    del tokens
+
+    text_t=list()
+    for _ in pos_tokens:
+        text_t.append([_[0], get_wordnet_pos(_[1])])
+    
+    del pos_tokens
+    lemmatizer = WordNetLemmatizer()
+    text = ' '.join([lemmatizer.lemmatize(word[0], word[1]) for word in text_t])
+    del lemmatizer
+    return text
+
+def clean(text):
+    text = remove_special_characters(text, remove_digits=True)
+    text = delete_stops(text)
+    text = tockenize(text)
+    return text
+
+
 translator = Translator()
 for col in ['책소개', '책속으로', '서평']:
     name = col+'_trans'
     if book[col].values == '':
         book[name] = ''
         continue
-    book[name] = text_pro.clean(translator.translate(text_pro.hapus_url(book.loc[0, col])).text)
-
+    book[name] = clean(translator.translate(hapus_url(book.loc[0, col])).text)
+del stops
 del translator
 
 total_text = book.loc[0, '책소개_trans'] + book.loc[0, '책속으로_trans'] + book.loc[0, '서평_trans']
