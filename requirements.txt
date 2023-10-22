@@ -5,7 +5,6 @@ openpyxl
 bs4
 requests
 scikit-learn
-selenium
 googletrans==3.1.0a0 
 nltk
 joblib
