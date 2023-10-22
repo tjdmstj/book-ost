@@ -28,7 +28,20 @@ nltk.download('stopwords')
 from sklearn.feature_extraction.text import TfidfVectorizer
 import joblib
 
-data = pd.read_excel('final_data.xlsx',index_col=0)
+@st.cache
+def load_data():
+    return pd.read_excel('final_data.xlsx',index_col=0)
+data = load_data()
+
+@st.cache
+def load_lyrics():
+    return pd.read_excel('lyrics.xlsx',index_col=0)
+lyrics = load_lyrics()
+
+@st.cache
+def load_model():
+    return joblib.load('SVM.pkl')
+model = load_model()
 
 ############################
 st.header('1️⃣ 책 제목을 입력해주세요.')
@@ -177,13 +190,15 @@ for col in ['책소개', '책속으로', '서평']:
 total_text = book.loc[0, '책소개_trans'] + book.loc[0, '책속으로_trans'] + book.loc[0, '서평_trans']
 
 
-
-df = pd.read_csv('tweet_data_agumentation.csv', index_col = 0)
+@st.cache
+def load_tweet():
+    return pd.read_csv('tweet_data_agumentation.csv', index_col = 0)
+df = load_tweet()
 
 tfidf_vect_emo = TfidfVectorizer()
 tfidf_vect_emo.fit_transform(df["content"])
 
-model = joblib.load('SVM.pkl')
+
 total_text2 = tfidf_vect_emo.transform(pd.Series(total_text))
 model.predict_proba(total_text2)
 sentiment = pd.DataFrame(model.predict_proba(total_text2),index=['prob']).T
@@ -270,7 +285,6 @@ st.markdown(long[:300]+'...')
 
 st.markdown('')
 
-lyrics = pd.read_excel('lyrics.xlsx',index_col=0)
 lyrics_list = []
 for i in top_five_df['url']:
     lyrics_list.append(lyrics[i== lyrics['url']]['lyrics'].values[0])
