@@ -269,6 +269,8 @@ del tfidf_array_cont
 del cosine_sim_keyword 
 del cosine_sim_keyword_df
 
+my_bar.progress(100, text='100%')
+
 # 전체 유사도 계산
 total_sim  = 0.8*audio_sim + 0.1*lyrics_sim + 0.1*keyword_sim
 
@@ -307,7 +309,6 @@ del artist
 del top_five_1
 del data
 
-my_bar.progress(100, text='100%')
 time.sleep(1)
 my_bar.empty()
 
