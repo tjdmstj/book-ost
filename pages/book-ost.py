@@ -186,6 +186,8 @@ for col in ['책소개', '책속으로', '서평']:
         book[name] = ''
         continue
     book[name] = clean(translator.translate(hapus_url(book.loc[0, col])).text)
+del stops
+del translator
 
 total_text = book.loc[0, '책소개_trans'] + book.loc[0, '책속으로_trans'] + book.loc[0, '서평_trans']
 
