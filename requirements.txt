@@ -2,6 +2,7 @@ streamlit
 pandas
 numpy
 openpyxl
+text_pro
 bs4
 requests
 scikit-learn
